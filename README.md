@@ -82,3 +82,8 @@ sudo apt update && sudo apt install trivy -y
 - sonarqube scanner
 - Sonar quality gate
 - Docker
+
+
+## Connect Jenkins with sonarQube 
+
+so frirst Create the Webhook token on SonarQube 
