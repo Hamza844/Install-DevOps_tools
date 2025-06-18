@@ -78,3 +78,7 @@ sudo apt update && sudo apt install trivy -y
 ```trivy image nginx:latest```
 
 
+## Plugin installation in Jenkins for Sonarqube integration 
+- sonarqube scanner
+- Sonar quality gate
+- Docker
