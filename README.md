@@ -97,7 +97,7 @@ sudo apt-get install jenkins
 ```
 
 to run jenkins so run command :
-``` sudo systemctl nebale jenkins```
+``` sudo systemctl enable jenkins```
 
 
 ## Plugin installation in Jenkins for Sonarqube integration 
@@ -109,3 +109,7 @@ to run jenkins so run command :
 ## Connect Jenkins with sonarQube 
 
 so frirst Create the Webhook token on SonarQube 
+
+
+![image](https://github.com/user-attachments/assets/325bac8f-8748-4495-a560-6b6646371604)
+
