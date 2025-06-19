@@ -102,6 +102,7 @@ to run jenkins so run command :
 
 
 ## Plugin installation in Jenkins for Sonarqube integration 
+
 - sonarqube scanner
 - Sonar quality gate
 - Docker
@@ -124,6 +125,7 @@ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_ES_BOOTSTRAP_C
 ## How to connect  Sonarqube with  Jenkins
 
 ✅ Prerequisites:
+
     - Jenkins already installed and running
     - SonarQube running
     - Internet access to install plugins
