@@ -78,6 +78,7 @@ sudo apt update && sudo apt install trivy -y
 ```trivy image nginx:latest```
 
 ## Install Java And Jenkins:
+so first install java
 
 ```
 sudo apt update
@@ -85,7 +86,7 @@ sudo apt install fontconfig openjdk-21-jre
 java -version
 
 ```
-
+and  install jenkins   
 ```
 sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
@@ -112,4 +113,20 @@ so frirst Create the Webhook token on SonarQube
 
 
 ![image](https://github.com/user-attachments/assets/325bac8f-8748-4495-a560-6b6646371604)
+
+
+## RUN SonarQube using Docker:
+
+```
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -v sonarqube_data:/opt/sonarqube/data -v sonarqube_extensions:/opt/sonarqube/extensions -v sonarqube_logs:/opt/ssonarqube/logs sonarqube:latest
+```
+
+## How to connect  Sonarqube with  Jenkins
+
+✅ Prerequisites:
+    - Jenkins already installed and running
+    - SonarQube running
+    - Internet access to install plugins
+
+ ### Step 1: 
 
