@@ -97,23 +97,9 @@ sudo apt-get update
 sudo apt-get install jenkins 
 ```
 
+
 to run jenkins so run command :
 ``` sudo systemctl enable jenkins```
-
-
-## Plugin installation in Jenkins for Sonarqube integration 
-
-- sonarqube scanner
-- Sonar quality gate
-- Docker
-
-
-## Connect Jenkins with sonarQube 
-
-so frirst Create the Webhook token on SonarQube 
-
-
-![image](https://github.com/user-attachments/assets/325bac8f-8748-4495-a560-6b6646371604)
 
 
 ## RUN SonarQube using Docker:
@@ -121,6 +107,12 @@ so frirst Create the Webhook token on SonarQube
 ```
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -v sonarqube_data:/opt/sonarqube/data -v sonarqube_extensions:/opt/sonarqube/extensions -v sonarqube_logs:/opt/ssonarqube/logs sonarqube:latest
 ```
+
+## Plugin installation in Jenkins for Sonarqube integration 
+
+- sonarqube scanner
+- Sonar quality gate
+- Docker
 
 ## How to connect  Sonarqube with  Jenkins
 
@@ -130,5 +122,91 @@ docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_ES_BOOTSTRAP_C
     - SonarQube running
     - Internet access to install plugins
 
- ### Step 1: 
+ ### 🔐 Step 1: Create SonarQube Token
+
+```
+Open SonarQube in browser → http://100.24.23.144:8080
+
+Login as admin
+
+Click on your profile icon → My Account
+
+Go to Security tab
+
+Under Generate Tokens:
+
+Name: jenkins-token
+
+Click Generate
+
+Copy the token somewhere safe
+
+✅ This token will be used in Jenkins to connect to SonarQube.
+
+```
+
+##🔧 Step 2: Add SonarQube Token to Jenkins
+
+```
+Go to: Manage Jenkins > Manage Credentials
+
+Select: (global) > Add Credentials
+
+Select:
+
+Kind: Secret text
+
+Secret: Paste your SonarQube token
+
+ID: sonar-token
+
+Description: SonarQube Token for Jenkins
+
+✅ This saves your token securely.
+
+```
+
+## ⚙️ Step 3: Configure SonarQube in Jenkins:
+
+```
+Go to: Manage Jenkins > Configure System
+
+Scroll to SonarQube servers
+
+Click Add SonarQube
+
+Fill:
+
+Name: SonarQube
+
+Server URL: jenkinsserevr IP:8080
+
+Server Authentication Token:
+
+Click Add → Kind: Secret text → Choose sonar-token
+
+✅ Tick: "Enable injection of SonarQube server configuration..."
+
+Click Save.
+
+```
+
+## 🔨 Step 4: Configure SonarQube Scanner Tool:
+
+```
+Go to: Manage Jenkins > Global Tool Configuration
+
+Scroll to SonarQube Scanner
+
+Click Add SonarQube Scanner
+
+Fill:
+
+Name: SonarScanner
+
+✅ Check: Install automatically
+
+Click Save
+
+```
 
